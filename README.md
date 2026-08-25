@@ -1,262 +1,106 @@
 # Career Lab
 
-Career Lab es un entorno personal de aprendizaje técnico y desarrollo profesional.
+Career Lab is a personal environment for iterative technical learning and
+professional development.
 
-Su objetivo es construir conocimientos de ingeniería de software de forma progresiva, práctica e iterativa, evitando roadmaps excesivamente grandes y aprendizaje basado únicamente en cursos o tecnologías.
+Its purpose is to build Software Engineering understanding through small,
+practical learning projects.
 
-El laboratorio utiliza proyectos pequeños como hilo conductor para entender cómo funcionan los sistemas de software de extremo a extremo.
+The goal is not to accumulate courses, technologies or large roadmaps.
 
----
-
-## Objetivo profesional
-
-Evolucionar progresivamente desde Software Developer hacia perfiles con mayor capacidad de diseño y responsabilidad técnica.
-
-La dirección profesional a largo plazo está relacionada con:
-
-- Software Engineering
-- Arquitectura de software y soluciones
-- Backend
-- Python
-- Inteligencia Artificial aplicada a sistemas software
-
-El objetivo a largo plazo sirve como orientación, no como roadmap detallado.
-
-Solo se diseña en profundidad el siguiente nivel de aprendizaje.
+The goal is to understand enough to take the next useful step, produce evidence,
+and reassess from there.
 
 ---
 
-## Filosofía
+## Philosophy
 
-### 1. Aprender desde problemas reales
+Career Lab is based on a few principles:
 
-El aprendizaje parte de preguntas concretas:
+- learn from concrete technical questions;
+- use small projects as learning vehicles;
+- understand fundamentals before focusing on tools;
+- prefer evidence over content consumption;
+- keep the active scope small;
+- evolve the roadmap iteratively.
 
-- ¿Qué ocurre cuando hago una petición?
-- ¿Dónde está ejecutándose esta aplicación?
-- ¿Cómo se configura?
-- ¿Dónde persisten sus datos?
-- ¿Cómo sé si está funcionando correctamente?
-- ¿Qué ocurre cuando falla?
-- ¿Cómo llega una nueva versión a producción?
+When a concept appears, the learning process can go one layer deeper, understand
+what is needed, then return to the original problem.
 
-Cuando aparece un concepto que no entiendo, bajo una capa, estudio ese concepto y vuelvo al problema original.
+---
 
-### 2. Fundamentos antes que herramientas
+## Learning model
 
-Las herramientas cambian. Los conceptos permanecen durante más tiempo.
-
-Por eso el objetivo no es aprender Docker, Azure, FastAPI o cualquier tecnología concreta como fin en sí mismo.
-
-El objetivo es comprender conceptos como:
-
-- procesos
-- HTTP
-- redes
-- persistencia
-- configuración
-- observabilidad
-- despliegue
-- resiliencia
-- diseño de software
-
-Las tecnologías se utilizan como herramientas para practicar estos conceptos.
-
-### 3. Progresión iterativa
-
-El desarrollo se organiza mediante niveles.
+Learning is organized as:
 
 ```text
-Nivel global
+Global direction
     |
-    +-- Subnivel
-    |     +-- Microobjetivo
-    |     +-- Microobjetivo
-    |     +-- Microobjetivo
-    |
-    +-- Checkpoint
+    +-- Current stage
+          |
+          +-- Micro-objective
+          +-- Micro-objective
+          +-- Checkpoint
 ```
 
-Solo se define detalladamente el nivel actual.
+Only the current stage is defined in detail.
 
-Cuando se completa:
-
-1. se revisan las evidencias;
-2. se identifican nuevas lagunas;
-3. se diseña el siguiente nivel.
-
-### 4. Evidencia antes que consumo
-
-Completar un curso, leer un libro o ver un vídeo no significa haber adquirido una competencia.
-
-El progreso debe demostrarse mediante evidencias:
-
-- explicar un concepto con palabras propias;
-- aplicarlo;
-- diagnosticar un problema;
-- justificar una decisión;
-- demostrarlo en el proyecto.
-
-Los recursos son herramientas de aprendizaje, no objetivos.
+Future stages are designed after reviewing evidence from the current one.
 
 ---
 
-## Uso de Inteligencia Artificial
+## Current state
 
-La IA forma parte del entorno como mentor e instructor.
+The active learning scope is defined in `CURRENT_LEVEL.md`.
 
-Por defecto, no debe actuar como desarrollador.
+Aggregate progress is tracked in `PROGRESS.md`.
 
-Las reglas completas están definidas en `AGENTS.md`.
-
----
-
-## Estado actual
-
-El nivel activo está definido en `CURRENT_LEVEL.md`.
-
-El progreso y las evidencias se registran en `PROGRESS.md`.
+Detailed session history belongs in `progress/sessions/`.
 
 ---
 
-## Estructura
+## Repository structure
 
 ```text
 career-lab/
-+-- app/             Proyecto práctico
-+-- context/         Contexto personal reutilizable
-+-- docs/            Conocimiento consolidado
-+-- evals/           Evaluaciones y checkpoints
-+-- prompts/         Prompts reutilizables
-+-- scripts/         Automatizaciones
-+-- specs/           Especificaciones de ejercicios/proyectos
-+-- AGENTS.md        Reglas para agentes de IA
-+-- CURRENT_LEVEL.md Nivel activo
-+-- PROGRESS.md      Bitácora de aprendizaje
++-- app/                  Practical learning project
++-- context/              Stable learner context
++-- docs/                 Human workflow and operational notes
++-- evals/                Checkpoints and evaluations
++-- progress/sessions/    Compact approved session snapshots
++-- prompts/              Reusable session prompts
++-- scripts/              Optional small utilities
++-- specs/                Project and exercise specifications
++-- AGENTS.md             Permanent AI rules and context router
++-- CURRENT_LEVEL.md      Active learning scope
++-- PROGRESS.md           Compact aggregate progress state
 +-- README.md
 ```
 
 ---
 
-## Flujo de trabajo
+## AI usage
 
-1. Leer `CURRENT_LEVEL.md`.
-2. Identificar el microobjetivo activo.
-3. Trabajar sobre el proyecto de `/app`.
-4. Usar la IA como mentor, no como implementador.
-5. Investigar únicamente los conceptos necesarios para resolver la duda actual.
-6. Generar una evidencia de aprendizaje.
-7. Registrar el progreso relevante en `PROGRESS.md`.
-8. Continuar con el siguiente microobjetivo.
-9. Al terminar el subnivel, realizar el checkpoint correspondiente.
-10. Diseñar el siguiente tramo únicamente después de revisar el anterior.
+AI is part of Career Lab as a mentor, instructor and reviewer.
+
+By default, AI should help the learner reason independently rather than act as
+the default implementer.
+
+Permanent agent rules and context routing are defined in `AGENTS.md`.
 
 ---
 
-## Uso de recursos
+## Operating workflow
 
-Los recursos de aprendizaje se seleccionan en función de una necesidad concreta.
+The detailed human workflow is documented in `docs/WORKFLOW.md`.
 
-Prioridad recomendada:
-
-1. documentación oficial;
-2. documentación técnica primaria;
-3. laboratorios o ejercicios pequeños;
-4. capítulos concretos de libros;
-5. artículos técnicos;
-6. vídeos, podcasts o divulgación complementaria.
-
-No se busca acumular recursos.
-
-Como norma general, cada microobjetivo debería tener:
-
-- 1 recurso principal;
-- 1 recurso opcional.
-
-Si el recurso no ayuda a responder una pregunta del nivel actual, probablemente no sea necesario todavía.
+Normal technical learning sessions do not need to load every repository document.
+Context should be loaded progressively, according to the task.
 
 ---
 
-## Principios de alcance
+## Main principle
 
-Para evitar parálisis por análisis:
-
-- no se diseña el roadmap completo a varios años;
-- no se estudian tecnologías sin una necesidad concreta;
-- no se añaden objetivos futuros al nivel actual;
-- no se amplía el proyecto innecesariamente;
-- no se confunde complejidad técnica con progreso.
-
-El siguiente escalón debe ser siempre suficientemente pequeño como para poder trabajarlo y evaluarlo.
-
----
-
-## Criterio de progreso
-
-Cada microobjetivo sigue tres dimensiones:
-
-### Entender
-
-Puedo explicar qué ocurre y por qué.
-
-### Aplicar
-
-Puedo utilizar el concepto de forma independiente.
-
-### Diagnosticar
-
-Puedo investigar qué ocurre cuando algo no funciona como esperaba.
-
-Un objetivo no se considera completado simplemente por haber consumido contenido formativo.
-
----
-
-## Rol del proyecto práctico
-
-El proyecto de `/app` actúa como laboratorio.
-
-Su función no es convertirse en un producto grande o comercial.
-
-Debe permanecer lo suficientemente pequeño como para permitir experimentar con:
-
-- comportamiento de una aplicación;
-- ejecución;
-- configuración;
-- persistencia;
-- integración;
-- observabilidad;
-- errores;
-- despliegue;
-- decisiones de diseño.
-
-Cada nueva funcionalidad debería existir porque permite estudiar un concepto, no porque haga el proyecto más impresionante.
-
----
-
-## Evolución del entorno
-
-Career Lab también puede evolucionar progresivamente como entorno de trabajo AI-first.
-
-En el futuro podrá incorporar, si existe una necesidad real:
-
-- contexto estructurado;
-- prompts versionados;
-- especificaciones;
-- evaluaciones;
-- automatizaciones;
-- herramientas para agentes;
-- trazabilidad;
-- validaciones;
-- flujos de trabajo asistidos por IA.
-
-Estas capacidades no forman parte del objetivo actual.
-
-Se introducirán únicamente cuando aporten valor al proceso de aprendizaje.
-
----
-
-## Principio principal
-
-> No intentar aprender todo lo necesario para llegar al objetivo final.
+> Do not try to learn everything needed for the final destination.
 >
-> Aprender únicamente lo necesario para subir el siguiente escalón.
+> Learn only what is needed to climb the next step.

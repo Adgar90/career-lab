@@ -2,9 +2,12 @@
 
 ## Purpose
 
-This document defines how learning sessions, progress tracking and level transitions work inside Career Lab.
+This document describes the human and operational process for Career Lab.
 
-It is the operational reference for the system.
+This document is not required during normal technical learning sessions.
+
+Agents should use `AGENTS.md` for context routing and load this document only
+when the workflow itself is relevant.
 
 ---
 
@@ -14,70 +17,80 @@ Each file has one primary responsibility.
 
 ## `README.md`
 
-Defines what Career Lab is and its general philosophy.
+Describes what Career Lab is, its philosophy and its repository structure.
 
 ## `AGENTS.md`
 
-Defines permanent behavioural rules for AI assistants.
-
-## `context/profile.md`
-
-Provides stable learner context.
+Defines permanent agent behaviour and routes context to specialized documents.
 
 ## `CURRENT_LEVEL.md`
 
 Defines the active learning scope.
 
-This is the source of truth for:
+It is the source of truth for:
 
 - current stage;
 - current micro-objective;
+- objectives;
+- minimum concepts;
+- expected evidence;
 - completion criteria;
 - scope exclusions.
 
+## `context/profile.md`
+
+Provides stable learner context.
+
+Use it only when personal or professional context affects a decision.
+
 ## `specs/`
 
-Defines what should be built or exercised to support learning.
+Contains project or exercise specifications.
+
+Use only the relevant specification for the current task.
 
 ## `PROGRESS.md`
 
-Records meaningful learning evidence and unresolved gaps.
+Maintains compact aggregate learning state.
 
-It is not a daily diary.
+It is not the detailed session history.
+
+## `progress/sessions/`
+
+Contains compact session snapshots approved at session close.
 
 ## `evals/`
 
-Defines checkpoints used to evaluate learning.
+Contains checkpoint and evaluation material.
 
 ## `prompts/`
 
-Contains reusable session-specific prompts.
+Contains reusable session prompts.
 
 ---
 
 # 2. Session startup
 
-A normal learning session should begin by reading:
+A normal session starts from the minimum context needed.
 
-1. `AGENTS.md`
-2. `CURRENT_LEVEL.md`
+The agent should:
 
-Then read only the additional context needed for the session.
+1. use already-known context from the current conversation;
+2. read `CURRENT_LEVEL.md` only if the active focus is unknown, stale or changed;
+3. read the most recent relevant snapshot in `progress/sessions/` when continuing
+   the same micro-objective across sessions;
+4. read any other document only when routed by `AGENTS.md`.
 
-Possible additional files:
+Do not load all Markdown files by default.
 
-- `context/profile.md`
-- the relevant file in `specs/`
-- relevant previous entries in `PROGRESS.md`
-- the relevant mentor prompt in `prompts/`
-
-Avoid loading the entire repository without a reason.
+Do not inspect the repository root or full directories merely to rediscover
+documented context.
 
 ---
 
 # 3. Select one question
 
-Each session should have one primary learning question.
+Each learning session should have one primary question.
 
 Examples:
 
@@ -86,15 +99,16 @@ Examples:
 - Why can this request not reach the service?
 - What happens if PostgreSQL disappears?
 
-If the session contains several unrelated learning goals, reduce the scope.
+If a session contains several unrelated learning goals, reduce the scope.
 
 ---
 
-# 4. Establish the initial mental model
+# 4. Establish the starting point
 
-Before receiving a full explanation, the learner should state what they currently believe.
+Before receiving a full explanation, the learner should state what they
+currently believe when that information is not already known.
 
-Possible formats:
+Useful forms:
 
 - short written explanation;
 - diagram;
@@ -102,7 +116,9 @@ Possible formats:
 - list of steps;
 - hypothesis.
 
-This provides a baseline and makes misconceptions visible.
+Do not ask for the same starting point again if the learner already provided it
+in the current session, unless the goal is retention or reformulation after
+feedback.
 
 ---
 
@@ -157,9 +173,7 @@ If the learner is blocked, assistance should increase gradually:
 
 # 7. Scope management
 
-During a session, new topics will appear.
-
-Classify them as:
+During a session, classify new topics as:
 
 ## NOW
 
@@ -185,7 +199,7 @@ The existence of a concept does not create a learning obligation.
 
 # 8. Evidence creation
 
-A meaningful learning session should ideally produce at least one evidence item.
+A meaningful session should ideally produce at least one evidence item.
 
 Examples:
 
@@ -194,51 +208,93 @@ Examples:
 - successful experiment;
 - failure diagnosis;
 - prediction confirmed or disproved;
-- commit implementing learner-written work;
+- learner-written implementation;
 - comparison between alternatives.
 
 Evidence should show understanding, not only activity.
 
 ---
 
-# 9. Progress proposal
+# 9. Session closure
 
-At the end of a meaningful session, AI may propose an update for `PROGRESS.md`.
+When the learner wants to close a session, the agent proposes a closure before
+writing any progress files.
 
-The proposal should separate:
+The proposal should include:
 
-### Demonstrated
+- snapshot path;
+- state changes, if any;
+- evidence to validate, if any;
+- open gaps;
+- one next action.
 
-What the learner actually showed.
+Example:
 
-### Gap detected
+```text
+Closure proposal
 
-What remains unclear or incorrect.
+Snapshot:
+progress/sessions/YYYY-MM-DD-topic.md
 
-### Evidence
+Proposed changes:
+- 1.1.1: NOT STARTED -> IN PROGRESS
+- evidence X: validated
+- evidence Y: pending
 
-What supports the claim.
+Next:
+[one action]
 
-### Next action
+Do you approve this closure?
+```
 
-The smallest useful continuation.
-
-Do not inflate progress.
+The learner may approve, correct or reject any proposed change.
 
 ---
 
-# 10. Human validation
+# 10. Session snapshots
 
-The learner reviews the proposed progress update.
+After closure approval, create one compact snapshot under
+`progress/sessions/`.
 
-Only the learner can approve:
+Use the naming convention:
 
-- writing the permanent progress entry;
-- changing a micro-objective status;
-- marking evidence checkboxes;
-- declaring a checkpoint complete.
+```text
+YYYY-MM-DD-topic.md
+```
 
-AI can recommend changes but cannot approve them autonomously.
+Recommended format:
+
+```md
+# Session - YYYY-MM-DD - [Topic]
+
+## Focus
+Micro-objective worked on.
+
+## Starting point
+Initial mental model or starting situation.
+
+## Work done
+What was investigated, discussed or tested.
+
+## Key learning
+What changed or became clearer.
+
+## Evidence
+What the learner demonstrated.
+
+## Open gaps
+What remains unclear.
+
+## Agreed status changes
+Only changes explicitly approved by the learner.
+
+## Next
+One next action.
+```
+
+Snapshots should be compact.
+
+They are not conversation transcripts.
 
 ---
 
@@ -246,57 +302,53 @@ AI can recommend changes but cannot approve them autonomously.
 
 After human approval:
 
-1. add the relevant session or milestone entry;
-2. update evidence checkboxes only when demonstrated;
-3. update status if appropriate;
-4. record remaining open questions.
+1. update aggregate status only when approved;
+2. mark evidence as validated only when approved;
+3. reference the latest relevant session snapshot;
+4. record one agreed next action.
 
 Avoid recording low-value details merely because they occurred.
 
----
+Allowed micro-objective states:
 
-# 12. Micro-objective completion
+- `NOT STARTED`;
+- `IN PROGRESS`;
+- `COMPLETE`.
 
-A micro-objective should normally demonstrate three dimensions:
+Evidence checkboxes mean:
 
-## Understand
+- `[ ]` pending;
+- `[x]` validated.
 
-The learner can explain the concept in their own words.
-
-## Apply
-
-The learner can use the concept in the project.
-
-## Diagnose
-
-The learner can investigate a simple failure or unexpected behaviour related to the concept.
-
-Not every concept requires equal depth, but completion should not rely only on memorization.
+Do not use percentages or complex scoring systems.
 
 ---
 
-# 13. Stage checkpoint
+# 12. Checkpoints
 
-When all micro-objectives are sufficiently developed:
+Use the relevant file in `evals/` only for:
 
-1. use the corresponding file in `evals/`;
-2. evaluate using project evidence;
-3. record gaps;
-4. complete the final reflection;
-5. decide stage status with human approval.
+- checkpoints;
+- formal evidence review;
+- completion decisions;
+- stage transitions.
 
 The checkpoint should test connected understanding, not isolated vocabulary.
 
+The final decision requires human approval.
+
+AI may recommend a status but must not approve completion autonomously.
+
 ---
 
-# 14. Designing the next stage
+# 13. Transitioning to the next stage
 
 Only after the current stage checkpoint:
 
 1. review demonstrated strengths;
 2. review remaining gaps;
 3. review new questions discovered through practice;
-4. consider current professional needs;
+4. consider current professional needs when relevant;
 5. design the smallest useful next stage.
 
 Do not automatically continue the original roadmap.
@@ -305,44 +357,12 @@ The next stage may differ from earlier assumptions.
 
 ---
 
-# 15. Document lifecycle
+# 14. When to modify the system
 
-## Stable documents
+Do not improve Career Lab infrastructure merely because an improvement is
+possible.
 
-Change infrequently:
-
-- `README.md`
-- `AGENTS.md`
-- `context/profile.md`
-- `docs/WORKFLOW.md`
-
-## Iterative documents
-
-Change as learning evolves:
-
-- `CURRENT_LEVEL.md`
-- `PROGRESS.md`
-
-## Stage-bound documents
-
-Usually created per stage:
-
-- `specs/stage-X.Y-project.md`
-- `evals/stage-X.Y-checkpoint.md`
-
-## Reusable prompts
-
-Change when the interaction method improves:
-
-- `prompts/mentor.md`
-
----
-
-# 16. When to modify the system itself
-
-Do not improve the Career Lab infrastructure merely because an improvement is possible.
-
-Modify the environment when a real friction appears.
+Modify the environment when real friction appears.
 
 Examples of justified improvements:
 
@@ -354,39 +374,5 @@ Examples of justified improvements:
 
 Avoid speculative infrastructure.
 
----
-
-# 17. AI-first evolution
-
-Future AI-first capabilities may include:
-
-- automatic context selection;
-- progress proposals based on session history;
-- evidence indexing;
-- checkpoint preparation;
-- structured evaluations;
-- prompt/version tracking;
-- agent tools;
-- automated environment checks.
-
-These should be added incrementally.
-
-The same rule applies:
-
-> Introduce infrastructure to solve observed friction, not anticipated complexity.
-
----
-
-# 18. Session close checklist
-
-Before ending a meaningful session:
-
-- [ ] Did I answer one concrete learning question?
-- [ ] Can I explain the result in my own words?
-- [ ] Did I generate evidence?
-- [ ] Did I identify any incorrect assumption?
-- [ ] Is there one clear next action?
-- [ ] Does `PROGRESS.md` need an update?
-- [ ] Did I stay inside the current scope?
-
-If the answer to most of these is yes, the session was productive.
+Future AI-first capabilities may include automation, indexing or specialized
+tools, but they should be introduced only when they solve observed friction.
