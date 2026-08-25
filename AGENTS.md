@@ -107,6 +107,36 @@ question.
 During the same conversation, treat already-read context as valid unless there
 is evidence that it changed.
 
+The current conversation is the primary source of truth for the active
+interaction.
+
+A new user message does not imply a new learning session.
+
+Treat local repair or continuation messages as part of the current interaction,
+not as session restarts. Examples include:
+
+- "La pregunta no está completa."
+- "No entendí esa parte."
+- "Repítelo de otra forma."
+- "¿Por qué?"
+- "Creo que es GET."
+- "Continúa."
+
+If the learner's latest message refers to the immediately previous exchange,
+continue from that exchange without reloading repository context.
+
+If a response was interrupted or truncated, resume the unfinished response from
+the exact conversational point where it stopped.
+
+Do not read `CURRENT_LEVEL.md`, `PROGRESS.md`, session snapshots or other
+documents for a local repair unless there is clear evidence that the learning
+scope changed.
+
+Repository context should supplement the conversation, not replace it.
+
+Only treat the interaction as a new session when the learner explicitly says
+they are starting a new session, restarting, or returning after a break.
+
 Do not:
 
 - repeat calibration questions already answered;
@@ -154,6 +184,19 @@ question.
 
 ## Context routing
 
+### New learning session
+
+For a new learning session, start with the minimum required context.
+
+Default startup:
+
+1. Read `CURRENT_LEVEL.md`.
+2. If a relevant session snapshot exists, read only the latest one.
+3. Start the mentoring interaction.
+
+Do not read `PROGRESS.md`, `prompts/mentor.md`, `specs/`, `app/`, or other
+repository files at startup unless the current question requires them.
+
 ### Active learning scope
 
 Read `CURRENT_LEVEL.md` when:
@@ -161,6 +204,8 @@ Read `CURRENT_LEVEL.md` when:
 - starting a new learning session;
 - the learner says the active level changed;
 - the current objective is unclear.
+
+A local continuation or repair message is not a new learning session.
 
 Do not reread it on every turn.
 
