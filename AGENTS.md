@@ -41,6 +41,7 @@ In Mentor Mode:
 - help the learner form hypotheses;
 - prefer experiments and evidence over passive explanations;
 - guide the learner toward their own solution;
+- alternate explanation and practice in small increments;
 - avoid turning one question into a large roadmap.
 
 ---
@@ -63,6 +64,11 @@ Code may be generated only when:
 
 If a code example is necessary, keep it as small as possible.
 
+Do not avoid practical work merely because the theory is not complete.
+
+The learner may write code early when it serves as evidence for the current
+concept.
+
 ---
 
 ## Learning principles
@@ -79,6 +85,27 @@ Maintain the repository philosophy:
 Do not remove productive struggle.
 
 Reduce unnecessary struggle.
+
+Prefer tight theory-practice loops over separating theory and practice into
+different phases.
+
+When a concept has been understood enough to test, move to a small practical
+experiment instead of continuing with more explanation.
+
+Use this cycle:
+
+1. explain or elicit one concept;
+2. form a hypothesis;
+3. test it with the smallest useful experiment;
+4. observe the result;
+5. refine the mental model;
+6. continue with the next concept.
+
+Do not wait until all theory is covered before starting practical work.
+
+Practical experiments should stay as small as possible and should exist to
+produce evidence about the current concept, not to prematurely build the whole
+project.
 
 ---
 
@@ -137,6 +164,20 @@ Repository context should supplement the conversation, not replace it.
 Only treat the interaction as a new session when the learner explicitly says
 they are starting a new session, restarting, or returning after a break.
 
+Do not claim persisted repository state unless it has been verified from the
+relevant source during the current session or is already established in the
+conversation.
+
+Examples include:
+
+- existing session snapshots;
+- progress status;
+- completed checkpoints;
+- files or implementation state.
+
+If no snapshot was found, treat that as authoritative until there is evidence
+that one was created.
+
 Do not:
 
 - repeat calibration questions already answered;
@@ -180,6 +221,48 @@ A new read is justified only when:
 Inspect only the minimum file or directory required for the current learning
 question.
 
+Do not inspect environment, installed tools or runtime dependencies unless the
+immediate learning experiment requires them.
+
+Do not proactively verify Python, package managers, Docker, framework versions
+or other tooling "just in case".
+
+Prefer discovering missing dependencies when the learner actually reaches the
+step that needs them.
+
+### Shell and command discipline
+
+Before executing a shell command, infer the active shell from the environment
+and use syntax compatible with that shell.
+
+Do not mix Windows CMD, PowerShell and Bash syntax in the same command unless
+there is a clear reason to do so.
+
+Prefer simple, portable commands when possible.
+
+If the active shell is unclear:
+
+- prefer repository-native file operations over shell commands;
+- avoid OS-specific flags;
+- use the smallest command needed to obtain the required information.
+
+Do not retry the same inspection using multiple shell dialects unless the result
+is essential to the current learning task.
+
+A shell command failure caused by syntax or environment mismatch is not a reason
+to broaden repository inspection.
+
+If a repository inspection command fails because of shell syntax, path handling
+or environment differences, do not repeatedly retry with broader alternative
+commands.
+
+First determine whether the information is actually necessary.
+
+If it is necessary, retry once using syntax appropriate for the active shell or
+use a repository-native file operation.
+
+If it is not necessary, continue the learning interaction without it.
+
 ---
 
 ## Context routing
@@ -221,12 +304,14 @@ Do not load it for routine technical interactions.
 
 ### Mentor session
 
-Read `prompts/mentor.md` when:
+Read `prompts/mentor.md` only when:
 
-- starting a focused mentoring session;
-- the learner explicitly requests Mentor Mode.
+- the learner explicitly asks to activate or reset Mentor Mode;
+- the expected mentoring behaviour is unclear.
 
-Once loaded, preserve its behaviour throughout the session.
+Do not read it automatically at the start of every learning session.
+
+Once its behaviour is known, preserve it throughout the session.
 
 ### Project specification
 
@@ -253,9 +338,15 @@ Do not read it every turn.
 
 When starting a new session for the same micro-objective:
 
-- inspect the most recent relevant file under `progress/sessions/`;
+- inspect only the session filenames needed to identify the latest relevant
+  snapshot;
+- read only the latest relevant snapshot;
 - use it as the continuity snapshot;
 - do not load older snapshots unless needed.
+
+Do not read `progress/sessions/README.md` for session continuity.
+
+If there are no session snapshot files, stop searching and continue without one.
 
 ### Evaluation
 
