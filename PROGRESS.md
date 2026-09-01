@@ -16,7 +16,7 @@ Stage:
 
 Micro-objective:
 
-**1.1.1 — Request lifecycle**
+**1.1.2 — Runtime and execution**
 
 Status:
 
@@ -24,12 +24,13 @@ Status:
 
 Latest relevant snapshot:
 
-None yet.
+`progress/sessions/2026-09-01-request-lifecycle.md`
 
 Next agreed action:
 
-Define or inspect the smallest request that can demonstrate the request
-lifecycle.
+Continue with 1.1.2 — Runtime and execution, building on what was already
+surfaced this session about `.venv`, multiple Python interpreters, and
+starting the server from outside the IDE.
 
 ---
 
@@ -37,12 +38,12 @@ lifecycle.
 
 ## 1.1.1 — Request lifecycle
 
-Status: `NOT STARTED`
+Status: `COMPLETE`
 
-- [ ] I can draw the request lifecycle.
-- [ ] I can explain every major step.
-- [ ] I can follow one request through my application.
-- [ ] I can explain the response that is returned.
+- [x] I can draw the request lifecycle.
+- [x] I can explain every major step.
+- [x] I can follow one request through my application.
+- [x] I can explain the response that is returned.
 
 ## 1.1.2 — Runtime and execution
 
@@ -95,7 +96,7 @@ Status: `NOT STARTED`
 
 ## Stage 1.1 — Understand an application end-to-end
 
-Status: `NOT STARTED`
+Status: `IN PROGRESS`
 
 - [ ] I can explain what happens when a request enters the application.
 - [ ] I can explain what is running.
