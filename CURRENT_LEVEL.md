@@ -177,7 +177,40 @@ I understand the basic relationship between application and database.
 
 ---
 
-## 1.1.5 — Basic observability
+## 1.1.5 — Dependencies
+
+### Question
+
+> What does this application need in order to run, and what happens when one of
+> those things is not there?
+
+### Minimum concepts
+
+- direct dependency
+- transitive dependency
+- Python interpreter resolution
+- virtual environment
+- version pinning
+- base image
+- external service dependency
+- dependency failure
+
+### Evidence
+
+I can list what my application depends on and explain how each dependency is
+resolved when the application starts.
+
+I can make one dependency unavailable, predict the failure and confirm it.
+
+### Done when
+
+I can explain the difference between what the application needs installed or
+reachable and what it needs configured, and I can demonstrate one dependency
+failure.
+
+---
+
+## 1.1.6 — Basic observability
 
 ### Question
 
@@ -209,7 +242,7 @@ My first debugging question becomes:
 
 ---
 
-## 1.1.6 — Delivery
+## 1.1.7 — Delivery
 
 ### Question
 
@@ -309,8 +342,8 @@ They are not current objectives.
 
 # Current focus
 
-**1.1.1 — Request lifecycle**
+**1.1.2 — Runtime and execution**
 
 Everything else is NEXT.
 
-Do not optimize for Stage 1.1.6 while working on Stage 1.1.1.
+Do not optimize for Stage 1.1.7 while working on Stage 1.1.2.

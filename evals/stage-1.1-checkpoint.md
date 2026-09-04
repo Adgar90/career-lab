@@ -148,7 +148,31 @@ Evidence:
 
 ---
 
-## E. Observability and failure investigation
+## E. Dependencies
+
+Ask:
+
+> What does this application depend on in order to run?
+
+Look for the distinction between:
+
+- application packages;
+- the interpreter or environment that resolves them;
+- the container image;
+- external services;
+- configuration values, which are not dependencies.
+
+Ask the learner to make one dependency unavailable, predict the result and verify it.
+
+Rating:
+
+`NOT YET / PARTIAL / DEMONSTRATED`
+
+Evidence:
+
+---
+
+## F. Observability and failure investigation
 
 Introduce or select a simple failure.
 
@@ -180,7 +204,7 @@ Evidence:
 
 ---
 
-## F. Delivery
+## G. Delivery
 
 Ask:
 

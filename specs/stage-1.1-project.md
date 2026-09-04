@@ -132,7 +132,27 @@ Primary question:
 
 ---
 
-### 1.1.5 — Basic observability
+### 1.1.5 — Dependencies
+
+Make the application's dependencies explicit rather than implicit.
+
+At minimum this should expose:
+
+- declared direct dependencies;
+- installation into a clean environment;
+- the interpreter or environment that resolves them;
+- PostgreSQL as an external service dependency;
+- the application's behaviour when a dependency is missing or unreachable.
+
+Do not introduce dependency tooling beyond what the current experiment needs.
+
+Primary question:
+
+> What must exist for this application to run, and what happens when it does not?
+
+---
+
+### 1.1.6 — Basic observability
 
 Introduce useful application logging.
 
@@ -152,7 +172,7 @@ Primary question:
 
 ---
 
-### 1.1.6 — Delivery
+### 1.1.7 — Delivery
 
 The learner should be able to move from a source-code change to a new running version.
 

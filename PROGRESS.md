@@ -72,7 +72,16 @@ Status: `NOT STARTED`
 - [ ] I understand the basic application/database relationship.
 - [ ] I can explain what happens when the database is unavailable.
 
-## 1.1.5 — Basic observability
+## 1.1.5 — Dependencies
+
+Status: `NOT STARTED`
+
+- [ ] I can list what my application depends on.
+- [ ] I can explain how those dependencies are resolved when it starts.
+- [ ] I can install the application into a clean environment.
+- [ ] I can demonstrate what happens when a dependency is unavailable.
+
+## 1.1.6 — Basic observability
 
 Status: `NOT STARTED`
 
@@ -81,7 +90,7 @@ Status: `NOT STARTED`
 - [ ] I can investigate one intentional failure without using the debugger.
 - [ ] I understand the conceptual difference between logs, metrics and traces.
 
-## 1.1.6 — Delivery
+## 1.1.7 — Delivery
 
 Status: `NOT STARTED`
 
